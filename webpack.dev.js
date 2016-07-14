@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const BUILD_DIR = path.resolve(__dirname, 'build')
+const BUILD_DIR = path.resolve(__dirname, 'dist')
 const APP_DIR = path.resolve(__dirname, 'example')
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
   devtool: '#inline-source-map',
   contentBase: '../',
   filename: 'bundle.js',
-  publicPath: '/build/',
+  publicPath: '/dist/',
   resolve: {
     modulesDirectories: ['node_modules'],
     extensions: ['', '.js']
