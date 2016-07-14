@@ -43,11 +43,21 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": ["MouseEvent"]
+    "globals": [
+      "MouseEvent"
+    ]
   },
   "dependencies": {
     "react-redux": "4.4.5",
     "reactcss": "1.0.4",
     "redux": "3.5.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcsole/react-redux-dropdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rcsole/react-redux-dropdown/issues"
+  },
+  "homepage": "https://github.com/rcsole/react-redux-dropdown#readme"
 }
