@@ -4,15 +4,6 @@ import ui from '@rcsole/redux-ui'
 
 import * as styles from './styles'
 
-const clickElementAt = ({x, y}) => {
-  const element = document.elementFromPoint(x, y)
-
-  if (element) {
-    element.click()
-    return true
-  }
-}
-
 @ui({state: {isExpanded: false, eventQueue: []}})
 class Dropdown extends React.Component {
   static propTypes = {
@@ -41,10 +32,6 @@ class Dropdown extends React.Component {
 
   handleOverlayClick (event) {
     this.props.updateUI('isExpanded', false)
-    this.props.updateUI('eventQueue', [
-      ...this.props.ui.eventQueue,
-      {run: clickElementAt, param: {x: event.clientX, y: event.clientY}}
-    ])
   }
 
   renderContent (isExpanded, content, classNames) {
