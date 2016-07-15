@@ -10,13 +10,13 @@
     "dropdown",
     "react-redux-component"
   ],
-  "main": "dist/index.js",
+  "main": "transpiled/index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --config webpack.dev.js",
-    "build": "rm -rf dist && mkdir dist && babel ./src --out-file ./dist/index.js --source-maps inline",
+    "build": "babel src -d transpiled -s inline",
     "prepublish": "npm run build"
   },
-  "author": "Ricard Solé Casas <ricardsolecasas@gmail.com>",
+  "author": "Ricard Sole Casas <ricardsolecasas@gmail.com> (https://github.com/rcsole)",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "6.10.1",
@@ -49,7 +49,6 @@
   },
   "dependencies": {
     "react-redux": "4.4.5",
-    "reactcss": "1.0.4",
     "redux": "3.5.2"
   },
   "repository": {
