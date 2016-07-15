@@ -8,7 +8,9 @@ import * as styles from './styles'
 class Dropdown extends React.Component {
   static propTypes = {
     label: React.PropTypes.string.isRequired,
-    classNames: React.PropTypes.object
+    classNames: React.PropTypes.object,
+    onTriggerClick: React.PropTypes.func,
+    forceUpdate: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -16,7 +18,7 @@ class Dropdown extends React.Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    return !isEqual(nextProps.ui, this.props.ui)
+    return !isEqual(nextProps.ui, this.props.ui) || nextProps.forceUpdate
   }
 
   componentDidUpdate () {
@@ -27,6 +29,7 @@ class Dropdown extends React.Component {
   }
 
   handleTriggerClick () {
+    this.props.onTriggerClick()
     this.props.updateUI('isExpanded', !this.props.ui.isExpanded)
   }
 
@@ -55,7 +58,8 @@ class Dropdown extends React.Component {
         ref='overlay'
         style={styles.overlay}
         onClick={handleClick}
-      ></div>
+      >
+      </div>
     )
   }
 
