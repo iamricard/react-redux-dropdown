@@ -1,4 +1,5 @@
 import React from 'react'
+import isEqual from 'lodash.isequal'
 import ui from '@rcsole/redux-ui'
 
 import * as styles from './styles'
@@ -23,8 +24,11 @@ class Dropdown extends React.Component {
     classNames: {}
   }
 
+  shouldComponentUpdate (nextProps) {
+    return !isEqual(nextProps.ui, this.props.ui)
+  }
+
   componentDidUpdate () {
-    console.log('dropdown updated!')
     if (!this.props.ui.eventQueue.length) return
 
     this.props.ui.eventQueue.forEach((evt) => evt.run(evt.param))
@@ -43,11 +47,14 @@ class Dropdown extends React.Component {
     ])
   }
 
-  renderContent (isExpanded, content) {
+  renderContent (isExpanded, content, classNames) {
     if (!isExpanded) return
 
     return (
-      <div style={ui.isExpanded ? styles.content : {}}>
+      <div
+        className={classNames.content}
+        style={ui.isExpanded ? styles.content : {}}
+      >
         {content}
       </div>
     )
@@ -83,7 +90,7 @@ class Dropdown extends React.Component {
           {label}
         </div>
 
-        {renderContent(ui.isExpanded, children)}
+        {renderContent(ui.isExpanded, children, classNames)}
 
         {renderOverlay(ui.isExpanded, this::handleOverlayClick)}
       </span>
