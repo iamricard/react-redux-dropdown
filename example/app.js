@@ -2,8 +2,8 @@ import React from 'react'
 import DOM from 'react-dom'
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
-import {reducer as uiReducer} from 'redux-ui'
-import Dropdown from '../'
+import {reducer as uiReducer} from '@rcsole/redux-ui'
+import Dropdown from '../src'
 
 const store = createStore(
   combineReducers({ui: uiReducer}),

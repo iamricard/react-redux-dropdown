@@ -48,6 +48,7 @@
     ]
   },
   "dependencies": {
+    "@rcsole/redux-ui": "1.0.0",
     "react-redux": "4.4.5",
     "redux": "3.5.2"
   },

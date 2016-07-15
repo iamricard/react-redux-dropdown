@@ -1,6 +1,7 @@
 import React from 'react'
-import ui from 'redux-ui'
-import styles from './styles'
+import ui from '@rcsole/redux-ui'
+
+import * as styles from './styles'
 
 const clickElementAt = ({x, y}) => {
   const element = document.elementFromPoint(x, y)
@@ -23,6 +24,7 @@ class Dropdown extends React.Component {
   }
 
   componentDidUpdate () {
+    console.log('dropdown updated!')
     if (!this.props.ui.eventQueue.length) return
 
     this.props.ui.eventQueue.forEach((evt) => evt.run(evt.param))
@@ -44,7 +46,11 @@ class Dropdown extends React.Component {
   renderContent (isExpanded, content) {
     if (!isExpanded) return
 
-    return content
+    return (
+      <div style={ui.isExpanded ? styles.content : {}}>
+        {content}
+      </div>
+    )
   }
 
   renderOverlay (isExpanded, handleClick) {
@@ -67,11 +73,11 @@ class Dropdown extends React.Component {
     } = this
 
     return (
-      <div>
+      <span>
         <div
           ref='trigger'
+          style={ui.isExpanded ? styles.trigger : {}}
           className={classNames.trigger}
-          style={styles.trigger}
           onClick={this::handleTriggerClick}
         >
           {label}
@@ -80,7 +86,7 @@ class Dropdown extends React.Component {
         {renderContent(ui.isExpanded, children)}
 
         {renderOverlay(ui.isExpanded, this::handleOverlayClick)}
-      </div>
+      </span>
     )
   }
 }
