@@ -1,10 +1,14 @@
+const container = {
+  display: 'inline-block'
+}
+
 const content = {
   position: 'relative',
   zIndex: 11
 }
 
 const overlay = {
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
   width: '100%',
@@ -17,4 +21,4 @@ const trigger = {
   zIndex: 11
 }
 
-export {content, overlay, trigger}
+export {container, content, overlay, trigger}

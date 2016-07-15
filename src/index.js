@@ -80,7 +80,10 @@ class Dropdown extends React.Component {
     } = this
 
     return (
-      <span>
+      <div
+        className={classNames.container}
+        style={styles.container}
+      >
         <div
           ref='trigger'
           style={ui.isExpanded ? styles.trigger : {}}
@@ -93,7 +96,7 @@ class Dropdown extends React.Component {
         {renderContent(ui.isExpanded, children, classNames)}
 
         {renderOverlay(ui.isExpanded, this::handleOverlayClick)}
-      </span>
+      </div>
     )
   }
 }
