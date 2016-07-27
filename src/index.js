@@ -29,7 +29,10 @@ class Dropdown extends React.Component {
   }
 
   handleTriggerClick () {
-    this.props.onTriggerClick()
+    if (typeof this.props.triggerClick === 'function') {
+      this.props.onTriggerClick()
+    }
+
     this.props.updateUI('isExpanded', !this.props.ui.isExpanded)
   }
 
