@@ -9,17 +9,14 @@ class Dropdown extends React.Component {
   static propTypes = {
     label: React.PropTypes.string.isRequired,
     classNames: React.PropTypes.object,
-    onTriggerClick: React.PropTypes.func,
-    forceUpdate: React.PropTypes.bool
+    onTriggerClick: React.PropTypes.func
   }
 
-  static defaultProps = {
-    classNames: {},
-    forceUpdate: false
-  }
+  static defaultProps = {classNames: {}}
 
-  shouldComponentUpdate (nextProps) {
-    return !isEqual(nextProps.ui, this.props.ui) || nextProps.forceUpdate
+  shouldComponentUpdate ({ui, children}) {
+    return !isEqual(ui, this.props.ui) ||
+           !isEqual(children, this.props.children)
   }
 
   handleTriggerClick () {
