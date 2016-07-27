@@ -4,7 +4,7 @@ import ui from '@rcsole/redux-ui'
 
 import * as styles from './styles'
 
-@ui({state: {isExpanded: false, eventQueue: []}})
+@ui({state: {isExpanded: false}})
 class Dropdown extends React.Component {
   static propTypes = {
     label: React.PropTypes.string.isRequired,
@@ -14,18 +14,12 @@ class Dropdown extends React.Component {
   }
 
   static defaultProps = {
-    classNames: {}
+    classNames: {},
+    forceUpdate: false
   }
 
   shouldComponentUpdate (nextProps) {
     return !isEqual(nextProps.ui, this.props.ui) || nextProps.forceUpdate
-  }
-
-  componentDidUpdate () {
-    if (!this.props.ui.eventQueue.length) return
-
-    this.props.ui.eventQueue.forEach((evt) => evt.run(evt.param))
-    this.props.updateUI({eventQueue: []})
   }
 
   handleTriggerClick () {
