@@ -23,7 +23,7 @@ class Dropdown extends React.Component {
   }
 
   handleTriggerClick () {
-    if (typeof this.props.triggerClick === 'function') {
+    if (typeof this.props.onTriggerClick === 'function') {
       this.props.onTriggerClick()
     }
 
