@@ -7,7 +7,7 @@ import * as styles from './styles'
 @ui({state: {isExpanded: false}})
 class Dropdown extends React.Component {
   static propTypes = {
-    label: React.PropTypes.string.isRequired,
+    label: React.PropTypes.any.isRequired,
     classNames: React.PropTypes.object,
     onTriggerClick: React.PropTypes.func
   }
